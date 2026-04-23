@@ -37,26 +37,32 @@ describe('TodoInfo', () => {
   });
 
   describe('', () => {
-    it('should NOT add TodoInfo--completed class for not completed todo', () => {
-      const user2 = {
-        id: 2,
-        name: 'Ervin Howell',
-        username: 'Antonette',
-        email: 'Shanna@melissa.tv',
-      };
+    it(
+      [
+        'should NOT add TodoInfo--completed class',
+        'for not completed todo',
+      ].join(' '),
+      () => {
+        const user2 = {
+          id: 2,
+          name: 'Ervin Howell',
+          username: 'Antonette',
+          email: 'Shanna@melissa.tv',
+        };
 
-      const completedTodo = {
-        userId: 2,
-        id: 10,
-        title: 'Learn CSS',
-        completed: false,
-        user: user2,
-      };
+        const completedTodo = {
+          userId: 2,
+          id: 10,
+          title: 'Learn CSS',
+          completed: false,
+          user: user2,
+        };
 
-      mount(<TodoInfo todo={completedTodo} />);
+        mount(<TodoInfo todo={completedTodo} />);
 
-      cy.get('.TodoInfo').should('not.have.class', 'TodoInfo--completed');
-    });
+        cy.get('.TodoInfo').should('not.have.class', 'TodoInfo--completed');
+      },
+    );
 
     it('should work with the other todo', () => {
       const user3 = {
